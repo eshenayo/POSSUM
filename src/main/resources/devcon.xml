@@ -160,8 +160,9 @@
         <prop name="IO.DevPath" type="String" value=""/>
         <prop name="sEncoding" type="String" value=""/>
 </JposEntry>
-    
-    
+
+
+
     <JposEntry logicalName="Datalogic 2300 Scanner">
         <creation factoryClass="com.dls.jpos.service.DLSScannerInstanceFactory" serviceClass="com.dls.jpos.service.DLSScannerService"/>
         <vendor name="DLA" url="http://www.datalogic.com"/>
@@ -378,6 +379,102 @@
         <prop name="sEncoding" type="String" value=""/>
 </JposEntry>
 
+ <JposEntry logicalName="HP_POLE_DISPLAY">
+	<creation factoryClass="VFD.DeviceServiceInstanceFactory" serviceClass="VFD.HP_POLE_DISPLAY"/>
+	<vendor name="HP Inc." url="http://www.HP.com"/>
+	<jpos category="LineDisplay" version="1.7"/>
+	<product description="Example LineDisplay " name="LineDisplay Service for JavaPOS(TM) Standard" url="http://www.HP.com"/>
+	<prop name="portName" type="String" value="/dev/ttyUSBx"/>
+	<prop name="baudRate" type="String" value="9600"/>
+	<prop name="CharacterSetASCIIBehavior" type="String" value="437"/>
+	<Prop name="commNumberOfRows" type="String" value="2"/>
+	<Prop name="commNumberOfColumns" type="String" value="20"/>
+	<!--Other non JavaPOS required property (mostly vendor properties and bus specific properties i.e. RS232 )-->
+ </JposEntry>
+ <JposEntry logicalName="HPLCM220PoleDisplay">
+	<creation factoryClass="VFD.DeviceServiceInstanceFactory" serviceClass="VFD.HPLCM200PoleDisplay"/>
+	<vendor name="HP Inc." url="http://www.HP.com"/>
+	<jpos category="LineDisplay" version="1.7"/>
+	<product description="Example LineDisplay " name="LineDisplay Service for JavaPOS(TM) Standard" url="http://www.HP.com"/>
+	<prop name="portName" type="String" value="/dev/ttyUSBx"/>
+	<prop name="baudRate" type="String" value="9600"/>
+	<prop name="CharacterSetASCIIBehavior" type="String" value="437"/>
+	<Prop name="commNumberOfRows" type="String" value="2"/>
+	<Prop name="commNumberOfColumns" type="String" value="20"/>
+	<!--Other non JavaPOS required property (mostly vendor properties and bus specific properties i.e. RS232 )-->
+ </JposEntry>
+ <JposEntry logicalName="HPLCM960PoleDisplay">
+	<creation factoryClass="VFD.DeviceServiceInstanceFactory" serviceClass="VFD.HPLCM960PoleDisplay"/>
+	<vendor name="HP Inc." url="http://www.HP.com"/>
+	<jpos category="LineDisplay" version="1.7"/>
+	<product description="Example LineDisplay " name="LineDisplay Service for JavaPOS(TM) Standard" url="http://www.HP.com"/>
+	<prop name="portName" type="String" value="/dev/ttyUSBx"/>
+	<prop name="baudRate" type="String" value="9600"/>
+	<prop name="CharacterSetASCIIBehavior" type="String" value="437"/>
+	<Prop name="commNumberOfRows" type="String" value="2"/>
+	<Prop name="commNumberOfColumns" type="String" value="20"/>
+	<!--Other non JavaPOS required property (mostly vendor properties and bus specific properties i.e. RS232 )-->
+ </JposEntry>
+ <JposEntry logicalName="HPLD381Display">
+	<creation factoryClass="VFD.DeviceServiceInstanceFactory" serviceClass="VFD.HPLD381Display"/>
+	<vendor name="HP Inc." url="http://www.HP.com"/>
+	<jpos category="LineDisplay" version="1.7"/>
+	<product description="Example LineDisplay " name="LineDisplay Service for JavaPOS(TM) Standard" url="http://www.HP.com"/>
+	<prop name="portName" type="String" value="/dev/ttyUSBx"/>
+	<prop name="baudRate" type="String" value="9600"/>
+	<prop name="CharacterSetASCIIBehavior" type="String" value="932"/>
+	<Prop name="commNumberOfRows" type="String" value="3"/>
+	<Prop name="commNumberOfColumns" type="String" value="32"/>
+	<!--Other non JavaPOS required property (mostly vendor properties and bus specific properties i.e. RS232 )-->
+ </JposEntry>
+ <JposEntry logicalName="HPLM920Display">
+	<creation factoryClass="VFD.DeviceServiceInstanceFactory" serviceClass="VFD.HPLM920Display"/>
+	<vendor name="HP Inc." url="http://www.HP.com"/>
+	<jpos category="LineDisplay" version="1.7"/>
+	<product description="Example LineDisplay " name="LineDisplay Service for JavaPOS(TM) Standard" url="http://www.HP.com"/>
+	<prop name="portName" type="String" value="/dev/ttyUSBx"/>
+	<prop name="baudRate" type="String" value="9600"/>
+	<prop name="CharacterSetASCIIBehavior" type="String" value="437"/>
+	<Prop name="commNumberOfRows" type="String" value="2"/>
+	<Prop name="commNumberOfColumns" type="String" value="20"/>
+	<!--Other non JavaPOS required property (mostly vendor properties and bus specific properties i.e. RS232 )-->
+ </JposEntry>
+ <JposEntry logicalName="HPLM940Display">
+	<creation factoryClass="VFD.DeviceServiceInstanceFactory" serviceClass="VFD.HPLM940Display"/>
+	<vendor name="HP Inc." url="http://www.HP.com"/>
+	<jpos category="LineDisplay" version="1.7"/>
+	<product description="Example LineDisplay " name="LineDisplay Service for JavaPOS(TM) Standard" url="http://www.HP.com"/>
+	<prop name="portName" type="String" value="/dev/ttyUSBx"/>
+	<prop name="baudRate" type="String" value="9600"/>
+	<prop name="CharacterSetASCIIBehavior" type="String" value="437"/>
+	<Prop name="commNumberOfRows" type="String" value="2"/>
+	<Prop name="commNumberOfColumns" type="String" value="20"/>
+	<!--Other non JavaPOS required property (mostly vendor properties and bus specific properties i.e. RS232 )-->
+ </JposEntry>
+ <JposEntry logicalName="HPPOSCCPoleDisplay">
+	<creation factoryClass="VFD.DeviceServiceInstanceFactory" serviceClass="VFD.HPPOSCCPoleDisplay"/>
+	<vendor name="HP Inc." url="http://www.HP.com"/>
+	<jpos category="LineDisplay" version="1.7"/>
+	<product description="Example LineDisplay " name="LineDisplay Service for JavaPOS(TM) Standard" url="http://www.HP.com"/>
+	<prop name="portName" type="String" value="/dev/ttyUSBx"/>
+	<prop name="baudRate" type="String" value="9600"/>
+	<prop name="CharacterSetASCIIBehavior" type="String" value="437"/>
+	<Prop name="commNumberOfRows" type="String" value="2"/>
+	<Prop name="commNumberOfColumns" type="String" value="20"/>
+	<!--Other non JavaPOS required property (mostly vendor properties and bus specific properties i.e. RS232 )-->
+ </JposEntry>
+ <JposEntry logicalName="HPTD620Display">
+	<creation factoryClass="VFD.DeviceServiceInstanceFactory" serviceClass="VFD.HPTD620Display"/>
+	<vendor name="HP Inc." url="http://www.HP.com"/>
+	<jpos category="LineDisplay" version="1.7"/>
+	<product description="Example LineDisplay " name="LineDisplay Service for JavaPOS(TM) Standard" url="http://www.HP.com"/>
+	<prop name="portName" type="String" value="/dev/ttyUSBx"/>
+	<prop name="baudRate" type="String" value="9600"/>
+	<prop name="CharacterSetASCIIBehavior" type="String" value="437"/>
+	<Prop name="commNumberOfRows" type="String" value="2"/>
+	<Prop name="commNumberOfColumns" type="String" value="20"/>
+	<!--Other non JavaPOS required property (mostly vendor properties and bus specific properties i.e. RS232 )-->
+ </JposEntry>
     <JposEntry logicalName="CashDrawer_ELO">
         <creation factoryClass="com.elo.jpos.EloJposServiceInstanceFactory" serviceClass="com.elo.jpos.CashDrawerService"/>
         <vendor name="Elo Touch Solutions" url="http://www.UnknownVerdorURL.com"/>
