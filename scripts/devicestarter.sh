@@ -36,6 +36,13 @@ function cleanStartDevices() {
 }
 
 # function zone end
+script_name=$(basename -- "$0")
+
+# Check to make sure the correct user is running the script
+if [ "$EUID" -ne 0 ]
+    then echo "This script must be run as root, restart like: sudo ./$script_name"
+    exit
+fi
 
 # Restart supporting services(if required) example NCRRetail
 cleanStartDevices
@@ -49,6 +56,16 @@ echo ""
 # Setting Spring Profile
 SpringProfile
 
+#Set JAVA_HOME if not in the environment
+
+JAVA_BIN=$(dirname $(readlink -f $(which java)))
+
+echo "Current version of Java is running from: $JAVA_BIN"
+
+if [ -z $JAVA_HOME ]; then
+  JAVA_HOME=$(dirname $JAVA_BIN)
+  echo "JAVA_HOME is not set, using current version path: $JAVA_HOME"
+fi
 
 export PATH=$PATH:$JAVA_HOME/bin
 # change it to dev for ATM
@@ -108,14 +125,17 @@ CP=$CP:/usr/lib/zebra-scanner/javapos/jpos/JposServiceScanner.jar
 CP=$CP:/usr/lib/zebra-scanner/javapos/jpos/JposServiceScale.jar
 #========== ELO ==========#
 CP=$CP:/usr/local/ELO/jar/eloJPosService114.jar
+#========== HP ==========#
+CP=$CP:/usr/local/hp/jpos 
 #========== Possum ==========#
-CP=$CP:/opt/target/possum/$(find PossumDeviceManager*)
+CP=$CP:/opt/target/possum/$(find . -name PossumDeviceManager*)
 CP=$CP:.
 
 #Define all LIB path here
 LIB_PATH=$LD_LIBRARY_PATH
 LIB_PATH=$LIB_PATH:/usr/lib/
 LIB_PATH=$LIB_PATH:/lib64/
+LIB_PATH=$LIB_PATH:/usr/local/lib # HP Libraries get installed to here
 LIB_PATH=$LIB_PATH:/usr/local/NCRRetail/lib/
 LIB_PATH=$LIB_PATH:/usr/local/ncr/aero:/usr/local/ncr/platform
 LIB_PATH=$LIB_PATH:/usr/local/Datalogic/JavaPOS/SupportJars
@@ -124,12 +144,12 @@ LIB_PATH=$LIB_PATH:/usr/local/Honeywell/
 LIB_PATH=$LIB_PATH:/usr/local/Honeywell/externalLib
 LIB_PATH=$LIB_PATH:/usr/lib/zebra-scanner/javapos/jni
 
-
 echo "DeviceManager log file path " $POSSUM_LOG_PATH
 if [ -z "$POSSUM_LOG_PATH" ]; then
   echo "Setting default path for log"
   POSSUM_LOG_PATH="/var/log/target/possum"
 fi
+
 mkdir -p $POSSUM_LOG_PATH/CrashLog
 
 
@@ -139,7 +159,14 @@ echo "Starting Possum..."
 echo "################################"
 echo ""
 
-cd /opt/target/possum
+POSSUM_DIR=/opt/target/possum
+if [ ! -d $POSSUM_DIR ]; then
+  echo "$POSSUM_DIR does not exist! Please provide the full path to POSSUM:"
+  read POSSUM_DIR
+  echo "POSSUM_DIR is now: $POSSUM_DIR"
+fi
+
+cd $POSSUM_DIR
 
 # TODO Need to check if NCRRetail form init.d and NCRLoader is running.
 java -cp $CP -Djava.library.path=$LIB_PATH -XX:ErrorFile=$POSSUM_LOG_PATH/CrashLog/hs_err_pid%p.log -XX:ReplayDataFile=$POSSUM_LOG_PATH/CrashLog/replay_pid%p.log -Dlog4j2.formatMsgNoLookups=true -Dloader.main=com.target.devicemanager.DeviceMain org.springframework.boot.loader.PropertiesLauncher
